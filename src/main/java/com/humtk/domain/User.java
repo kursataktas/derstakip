@@ -3,6 +3,8 @@ package com.humtk.domain;
 /**
  * Created by kursat on 6.8.2017.
  */
+
+
 public class User {
 
     private long id;
