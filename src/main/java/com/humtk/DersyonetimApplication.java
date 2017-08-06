@@ -8,5 +8,6 @@ public class DersyonetimApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DersyonetimApplication.class, args);
+		System.out.print("Hello world");
 	}
 }
