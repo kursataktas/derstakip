@@ -3,7 +3,7 @@ package com.humtk.domain;
 import javax.persistence.*;
 
 /**
- * Created by user on 6.08.2017.
+ * Created by burcu on 6.08.2017.
  */
 
 @Entity
