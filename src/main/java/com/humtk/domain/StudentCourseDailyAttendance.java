@@ -1,16 +1,32 @@
 package com.humtk.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by kursat on 6.8.2017.
  */
-public class StudentAttendance {
+public class StudentCourseDailyAttendance {
 
+    /*
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private long id;
-    private long student_id;
-    private long course_id;
+
+    @ManyToOne
+    @JoinTable(name = "student")
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    @ManyToOne
+    @JoinTable(name = "course")
+    @JoinColumn(name = "course_id")
+    private Course course;
+
     private boolean attendance;
+
     private Date date;
 
     public long getId() {
@@ -19,22 +35,6 @@ public class StudentAttendance {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getStudent_id() {
-        return student_id;
-    }
-
-    public void setStudent_id(long student_id) {
-        this.student_id = student_id;
-    }
-
-    public long getCourse_id() {
-        return course_id;
-    }
-
-    public void setCourse_id(long course_id) {
-        this.course_id = course_id;
     }
 
     public boolean isAttendance() {
@@ -52,4 +52,5 @@ public class StudentAttendance {
     public void setDate(Date date) {
         this.date = date;
     }
+    */
 }

@@ -1,9 +1,9 @@
 package com.humtk.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by kursat on 6.8.2017.
@@ -18,6 +18,18 @@ public class Course {
 
     private String name;
     private String course_code;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<StudentCourse> studentList;
+
+    @ManyToOne
+    @JoinColumn(name = "instructor_id")
+    private Instructor instructor;
+
+
+   /* @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<StudentCourseDailyAttendance> studentCourseDailyAttendanceList;*/
 
     public long getId() {
         return id;

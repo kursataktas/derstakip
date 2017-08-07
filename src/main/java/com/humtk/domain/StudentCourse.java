@@ -1,12 +1,25 @@
 package com.humtk.domain;
 
+import javax.persistence.*;
+
 /**
  * Created by user on 6.08.2017.
  */
+
+@Entity
 public class StudentCourse {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private long student_id;
-    private long course_id;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     public long getId() {
         return id;
@@ -16,19 +29,20 @@ public class StudentCourse {
         this.id = id;
     }
 
-    public long getStudent_id() {
-        return student_id;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setStudent_id(long student_id) {
-        this.student_id = student_id;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public long getCourse_id() {
-        return course_id;
-    }
-
-    public void setCourse_id(long course_id) {
-        this.course_id = course_id;
+    @Override
+    public String toString() {
+        return "StudentCourse{" +
+                "id=" + id +
+                ", student=" + student +
+                ", course=" + course +
+                '}';
     }
 }
