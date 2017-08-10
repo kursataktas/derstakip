@@ -9,5 +9,7 @@ import java.util.List;
  */
 public interface CourseService {
 
-    List<Course> getCoursesByInstructorId(Long InstructorId);
+    Course findById(long id);
+    void save(Course course);
+    List<Course> getByInstructorCourse(long instructorId);
 }

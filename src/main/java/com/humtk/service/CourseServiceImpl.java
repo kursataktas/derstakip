@@ -21,4 +21,18 @@ public class CourseServiceImpl implements CourseService {
         return null;
     }
 
+    @Override
+    public Course findById(long id) {
+        return null;
+    }
+
+    @Override
+    public void save(Course course) {
+        courseDao.save(course);
+    }
+
+    @Override
+    public List<Course> getByInstructorCourse(long instructorId) {
+        return null;
+    }
 }

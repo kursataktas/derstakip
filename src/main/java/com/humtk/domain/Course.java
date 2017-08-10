@@ -1,7 +1,5 @@
 package com.humtk.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class Course {
     private long id;
 
     private String name;
-    private String course_code;
+    private String courseCode;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<StudentCourse> studentList;
@@ -47,11 +45,37 @@ public class Course {
         this.name = name;
     }
 
-    public String getCourse_code() {
-        return course_code;
+    public String getCourseCode() {
+        return courseCode;
     }
 
-    public void setCourse_code(String course_code) {
-        this.course_code = course_code;
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public List<StudentCourse> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<StudentCourse> studentList) {
+        this.studentList = studentList;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", courseCode='" + courseCode + '\'' +
+                ", instructor=" + instructor +
+                '}';
     }
 }

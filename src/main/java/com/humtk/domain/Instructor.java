@@ -19,7 +19,7 @@ public class Instructor {
     private String password;
     private String mail;
 
-    @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Course> courseList;
 
     public long getId() {
@@ -78,7 +78,6 @@ public class Instructor {
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
-                ", courseList=" + courseList +
                 '}';
     }
 }

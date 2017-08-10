@@ -20,6 +20,7 @@ public class Student {
     private String lastName;
     private String password;
     private String mail;
+
     private int studentNo;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
