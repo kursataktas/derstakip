@@ -10,16 +10,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
+var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
+var http_1 = require('@angular/http');
 var dashboard_routes_1 = require('./dashboard.routes');
+var instructor_service_1 = require('./services/instructor.service');
 var DashboardModule = (function () {
     function DashboardModule() {
     }
     DashboardModule = __decorate([
         core_1.NgModule({
             imports: [
-                router_1.RouterModule.forChild(dashboard_routes_1.MODULE_ROUTES)
+                router_1.RouterModule.forChild(dashboard_routes_1.MODULE_ROUTES),
+                common_1.CommonModule,
+                platform_browser_1.BrowserModule,
+                http_1.HttpModule,
+                router_1.RouterModule,
+                http_1.JsonpModule,
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule
             ],
-            declarations: [dashboard_routes_1.MODULE_COMPONENTS]
+            declarations: [dashboard_routes_1.MODULE_COMPONENTS],
+            providers: [
+                instructor_service_1.InstructorService
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardModule);

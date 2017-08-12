@@ -4,19 +4,20 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+import {Course} from '../../classes/course';
 
 @Injectable()
 export class InstructorService {
-	
+
 	private listAnnotation_endPoint = "";
 	private addAnnotation_endPoint = "";
 	private editAnnotation_endPoint = "";
 	private deleteAnnotation_endPoint = "";
-	private listCourses_endPoint = "";
+	private listCourses_endPoint = "localhost:8080/api/course/courses/1";
 	private addCourses_endPoint = "";
 	
 
-	constructor (private http: Http) {}	
+	constructor (private http: Http) {}
 	
 	addAnnotation (ann: string , code : string) {
 		
@@ -34,8 +35,10 @@ export class InstructorService {
 		
 	}
 	
-	listCourses () {
-		
+	public listCourses () : Observable<Course[]> {
+		return this.http.get(this.listCourses_endPoint)
+			.map(res => res.json())
+			.catch(this.handleError)
 	}
 	
 	addCourse () {

@@ -9,16 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var instructor_service_1 = require("../services/instructor.service");
 var CourseComponent = (function () {
-    function CourseComponent() {
+    function CourseComponent(service) {
+        this.service = service;
+        this.listAll();
     }
+    CourseComponent.prototype.listAll = function () {
+        var _this = this;
+        this.service.listCourses()
+            .subscribe(function (courses) { return _this.courses = courses['courses']; }, function (error) { return _this.errorMessage = error; });
+    };
     CourseComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'course-cmp',
             templateUrl: 'course.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [instructor_service_1.InstructorService])
     ], CourseComponent);
     return CourseComponent;
 }());

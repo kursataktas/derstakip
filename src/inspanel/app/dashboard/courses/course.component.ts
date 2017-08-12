@@ -11,8 +11,21 @@ import { InstructorService } from "../services/instructor.service";
 })
 
 export class CourseComponent{
+
     courses: Course[];
-    service: InstructorService;
+
+    errorMessage: string;
+
+    constructor (private service: InstructorService ) {
+        this.listAll();
+    }
+
+    listAll() {
+        this.service.listCourses()
+            .subscribe(
+                courses => this.courses = courses ['courses'],
+                error =>  this.errorMessage = <any>error);
+    }
 
 
 }
