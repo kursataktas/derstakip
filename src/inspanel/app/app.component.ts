@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {LocationStrategy, PlatformLocation, Location} from '@angular/common';
-
-declare var $:any;
+import { Router, ActivatedRoute } from '@angular/router';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @Component({
     selector: 'my-app',
-    moduleId: module.id,
-    templateUrl: 'app.component.html'
+    templateUrl: 'app/app.component.html'
 })
 
 export class AppComponent implements OnInit{
@@ -15,17 +13,16 @@ export class AppComponent implements OnInit{
         this.location = location;
     }
     ngOnInit(){
-        $.getScript('../assets/js/material-dashboard.js');
-        $.getScript('../assets/js/initMenu.js');
+        $.getScript('../assets/js/light-bootstrap-dashboard.js');
     }
     public isMaps(path){
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 1 );
-        if(path == titlee){
-            return false;
+        if(path === titlee){
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 }

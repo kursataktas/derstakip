@@ -15,24 +15,22 @@ var AppComponent = (function () {
         this.location = location;
     }
     AppComponent.prototype.ngOnInit = function () {
-        $.getScript('../assets/js/material-dashboard.js');
-        $.getScript('../assets/js/initMenu.js');
+        $.getScript('../assets/js/light-bootstrap-dashboard.js');
     };
     AppComponent.prototype.isMaps = function (path) {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice(1);
-        if (path == titlee) {
-            return false;
+        if (path === titlee) {
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            moduleId: module.id,
-            templateUrl: 'app.component.html'
+            templateUrl: 'app/app.component.html'
         }), 
         __metadata('design:paramtypes', [common_1.Location])
     ], AppComponent);
