@@ -1,0 +1,14 @@
+<div class="sidebar-wrapper">
+    <div class="logo">
+        <img src="/assets/img/hacettepe.png" style="width:100%; height:100px;"/>
+        <h5 style=" text-align:center;"><b>DERS TAKİP SİSTEMİ</b></h5>
+    </div>
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+                <a  [routerLink]="[menuItem.path]">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>

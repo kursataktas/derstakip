@@ -1,0 +1,37 @@
+<div class="main-content" style= "width:190%;">
+	<div class="container-fluid">
+		<div class="col-md-6">
+			<div class="card" [@cardtasks]>
+				<div class="header">
+					<h4 class="title">DUYURULAR</h4><hr>
+					<div class="input-group" style="width:97%; margin-bottom: 15px;margin-left: 15px;">
+						<input type="text" #annotation class="form-control" style="width:70%;" placeholder="Yeni Duyuru Ekle">
+						<span class="input-group-btn">
+							<button (click) = "addAnnotation(annotation.value);" class="btn btn-default" type="button" style="background-color:#6495ED">KAYDET</button>
+						</span>
+					</div>
+                </div>
+                <div class="content">
+					<div class="table-full-width">
+						<table class="table">
+							<tbody>
+								<tr>
+									<td>duyuru 1</td>
+										<td class="td-actions text-right">
+											<button type="button" rel="tooltip" title="Düzenle" class="btn btn-info btn-simple btn-xs">
+												<i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Sil" class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+										</td>
+                                  </tr>                                
+							</tbody>
+						</table>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
