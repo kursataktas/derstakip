@@ -1,6 +1,7 @@
 package com.humtk.service;
 
 import com.humtk.dao.CourseDao;
+import com.humtk.dao.InstructorDao;
 import com.humtk.domain.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ public class CourseServiceImpl implements CourseService {
 
     @Autowired
     private CourseDao courseDao;
+    @Autowired
+    private InstructorDao instructorDao;
 
     public List<Course> getCoursesByInstructorId(Long InstructorId) {
         return null;
@@ -23,7 +26,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course findById(long id) {
-        return null;
+        return courseDao.findById(id);
     }
 
     @Override
@@ -33,6 +36,6 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<Course> getByInstructorCourse(long instructorId) {
-        return null;
+        return instructorDao.findById(instructorId).getCourseList();
     }
 }
