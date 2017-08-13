@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<form class="form-signin" th:action="@{/student/login}" method="post" >
+		<span th:text="${error}"></span>
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <div class="form-group">
+                        <label  class="sr-only">E-Mail</label>
+                        <input type="text" class="form-control" placeholder="E-mail" name="mail" required="required" autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only">Password</label>
+                        <input type="password" class="form-control" placeholder="Password" name="password" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="remember-me" id="remember-me"/> &nbsp; Remember me
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+         </form>
+</body>
+</html>

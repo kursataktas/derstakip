@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+    <div class="sidebar" data-color="purple" data-image="img/sidebar-5.jpg" th:fragment="common-sidebar">
+
+    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <span th:text="${session.student.firstName}"></span>
+            </div>
+
+            <ul class="nav">
+            	
+            	<li th:class="${activeAnaSayfa}? 'active' : null">
+                    <a th:href="@{/student/ana_sayfa}">
+                        <i class="pe-7s-graph"></i>
+                        <p>Ana Sayfa</p>
+                    </a>
+                </li>
+                
+                <li th:class="${activeAlinan}? 'active' : null">
+                    <a th:href="@{/student/alinan_dersler}">
+                        <i class="pe-7s-graph"></i>
+                        <p>Alınan Dersler</p>
+                    </a>
+                </li>
+                
+                <li th:class="${activeDevam}? 'active' : null">
+                    <a th:href="@{/student/devamsizlik}">
+                        <i class="pe-7s-user"></i>
+                        <p>Devamsızlık</p>
+                    </a>
+                </li>
+
+                
+				
+            </ul>
+    	</div>
+    </div>
+
+</body>
+</html>

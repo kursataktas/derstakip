@@ -21,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public Student findByMail(String mail) {
-        return null;
+        return studentDao.findByMail(mail);
     }
 
     public Student findByStudentNo(int studentNo) {
@@ -30,5 +30,10 @@ public class StudentServiceImpl implements StudentService {
 
     public void save(Student student) {
         studentDao.save(student);
+    }
+
+    @Override
+    public Student findById(long id) {
+        return studentDao.findById(id);
     }
 }

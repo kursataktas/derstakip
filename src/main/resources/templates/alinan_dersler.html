@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+
+<body>
+<head th:replace="common/sidebar :: common-sidebar"/>
+
+<div th:replace="common/header :: common-mainpanel"/>
+
+	<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">ALINAN DERSLER</h4>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                        	<th>Dersin Kodu</th>
+                                    		<th>Dersin Adi</th>
+                                    	</tr>
+                                    </thead>
+                                    <tbody>
+										<tr th:each="sCourse : ${studentCourses}">
+   												<td th:text="${sCourse.course_code}"></td>
+   												<td th:text="${sCourse.name}"></td>
+										</tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+          </div>
+    </div>
+
+
+<div th:replace="common/footer :: common-footer">
+
+</body>
+
+</html>

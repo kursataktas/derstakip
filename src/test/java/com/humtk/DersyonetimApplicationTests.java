@@ -37,6 +37,12 @@ public class DersyonetimApplicationTests {
 	}
 
 	@Test
+	public void getStudent() {
+		System.out.print(studentService.findByMail("kursat.ce@gmail.com"));
+		/*System.out.print(studentService.findById(1));*/
+	}
+
+	@Test
 	public void addCourse() {
 		Course c = new Course();
 		c.setCourseCode("bbm201");

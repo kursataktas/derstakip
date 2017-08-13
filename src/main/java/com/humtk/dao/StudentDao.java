@@ -9,7 +9,10 @@ import java.util.List;
  * Created by kursat on 8.8.2017.
  */
 public interface StudentDao extends CrudRepository<Student, Long>{
+
+    Student findById(long id);
     Student findByMail(String mail);
     Student findByStudentNo(int studentNo);
     List<Student> findAll();
+
 }
