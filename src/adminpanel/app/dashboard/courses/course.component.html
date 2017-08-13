@@ -1,0 +1,28 @@
+<div class="main-content" >
+    <div class="container-fluid" style="align:center;">
+        <div class="row">
+            <div class="card" style="margin-left:10%; margin-right:10%; ">
+                <h4 class="title" style="margin-left: 15px; padding-top:10px;"> DERSLERİM </h4><hr>
+                <table class="table table-hover table-striped">
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Ders Kodu</th>
+                            <th>Ders İsmİ</th>
+                            <th>Devamsızlık Gİr</th>
+                        </tr>
+                        <tbody>
+
+                        <tr *ngFor="let course of courses">
+                            <td> {{course.id }}</td>
+                            <td> bbm500  </td>
+                            <td> dersin adı  </td>
+                            <td><button class="btn btn-default" type="button" style="height:40px; width:70px;background-color:#6495ED"><b style="color:white">-></b></button></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+               </div>
+        </div>
+    </div>
+</div>
