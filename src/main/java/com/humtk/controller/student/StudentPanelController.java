@@ -1,8 +1,10 @@
-package com.humtk.controller;
+package com.humtk.controller.student;
 
 import com.humtk.domain.Course;
+import com.humtk.domain.Instructor;
 import com.humtk.domain.Student;
 import com.humtk.service.CourseService;
+import com.humtk.service.StudentCourseService;
 import com.humtk.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,20 +20,35 @@ import java.util.List;
  * Created by kursat on 13.8.2017.
  */
 @Controller
-public class StudentPanelStudentController {
+@RequestMapping("/student")
+public class StudentPanelController {
 
     @Autowired
     private StudentService studentService;
 
     @Autowired
     private CourseService courseService;
+    
+    @Autowired
+    private StudentCourseService studentCourseService;
+    
+    
+    @RequestMapping(value = "", method= RequestMethod.GET)
+    public String indexGet(HttpSession session) {
+    	if(session.getAttribute("student")==null)
+            return "redirect:/student/login";
+        return "redirect:/student/ana_sayfa";
+    }
 
-    @RequestMapping(value = "/student/ana_sayfa", method= RequestMethod.GET)
-    public String index(ModelMap modelMap) {
+    
+    @RequestMapping(value = "/ana_sayfa", method= RequestMethod.GET)
+    public String index(HttpSession session) {
+    	if(session.getAttribute("student")==null)
+            return "redirect:/student/login";
         return "ana_sayfa";
     }
 
-    @RequestMapping(value = "/student/devamsizlik", method=RequestMethod.GET)
+    @RequestMapping(value = "/devamsizlik", method=RequestMethod.GET)
     public String devamsizlik(Model model, HttpSession session) {
         if(session.getAttribute("student")==null)
             return "redirect:/student/login";
@@ -39,20 +56,20 @@ public class StudentPanelStudentController {
         return "devamsizlik";
     }
 
-    @RequestMapping(value = "/student/alinan_dersler", method=RequestMethod.GET)
+    @RequestMapping(value = "/alinan_dersler", method=RequestMethod.GET)
     public String alinan_dersler(Model model, HttpSession session) {
         if(session.getAttribute("student")==null)
             return "redirect:/student/login";
 
         Student student = (Student) session.getAttribute("student");
-        List<Course> sc = courseService.getByStudentCourse(student.getId());
+        List<Course> sc = studentCourseService.getByStudent(student);
 
         model.addAttribute("studentCourses",sc);
         model.addAttribute("activeAlinan",true);
         return "alinan_dersler";
     }
 
-    @RequestMapping(value = "/student/logout", method=RequestMethod.GET)
+    @RequestMapping(value = "/logout", method=RequestMethod.GET)
     public String logout(HttpSession session) {
         session.removeAttribute("student");
         return "redirect:/student/login";

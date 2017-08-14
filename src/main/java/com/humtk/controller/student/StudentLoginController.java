@@ -1,4 +1,4 @@
-package com.humtk.controller;
+package com.humtk.controller.student;
 
 import com.humtk.domain.Student;
 import com.humtk.service.StudentService;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 
 @Controller
-public class StudentPanelController {
+public class StudentLoginController {
 
     @Autowired
     private StudentService studentService;
@@ -41,12 +41,9 @@ public class StudentPanelController {
         if(newStudent!=null) {
             if(newStudent.getPassword().equals(password)) {
                 session.setAttribute("student", newStudent);
-                System.out.println("ana");
                 return "redirect:/student/ana_sayfa";
             }
         }
-
-        System.out.println("error");
         modelMap.put("error", "Account is invalid.");
         return "login";
     }
