@@ -21,7 +21,7 @@ public class StudentLoginController {
     @Autowired
     private StudentService studentService;
 
-    @RequestMapping("/")
+    @RequestMapping("/student")
     public String index(HttpSession session) {
         if(session.getAttribute("student")==null)
             return "redirect:/login";
