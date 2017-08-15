@@ -18,7 +18,7 @@ var CourseComponent = (function () {
     CourseComponent.prototype.listAll = function () {
         var _this = this;
         this.service.listCourses()
-            .subscribe(function (courses) { return _this.courses = courses['courses']; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (courses) { return _this.courses = courses; }, function (error) { return _this.errorMessage = error; });
     };
     CourseComponent = __decorate([
         core_1.Component({
