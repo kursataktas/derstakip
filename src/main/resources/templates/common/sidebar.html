@@ -6,41 +6,45 @@
 </head>
 <body>
 
-    <div class="sidebar" data-color="purple" data-image="img/sidebar-5.jpg" th:fragment="common-sidebar">
+    <div class="sidebar" data-color = "red" data-image="../img/sidebar-2.jpg" th:fragment="common-sidebar">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <span th:text="${session.student.firstName}"></span>
+                <img src="../img/hacettepe.png" style="width: 100%;">
+
             </div>
 
             <ul class="nav">
             	
             	<li th:class="${activeAnaSayfa}? 'active' : null">
                     <a th:href="@{/student/ana_sayfa}">
-                        <i class="pe-7s-graph"></i>
+                        <i class="fa fa-home"></i>
                         <p>Ana Sayfa</p>
                     </a>
                 </li>
                 
                 <li th:class="${activeAlinan}? 'active' : null">
                     <a th:href="@{/student/alinan_dersler}">
-                        <i class="pe-7s-graph"></i>
+                        <i class="pe-7s-note2"></i>
                         <p>Alınan Dersler</p>
                     </a>
                 </li>
                 
                 <li th:class="${activeDevam}? 'active' : null">
                     <a th:href="@{/student/devamsizlik}">
-                        <i class="pe-7s-user"></i>
+                        <i class="pe-7s-graph"></i>
                         <p>Devamsızlık</p>
                     </a>
                 </li>
-
-                
-				
+				<li th:class="${activeDevam}? 'active' : null">
+                    <a th:href="@{/student/logout}">
+                        <i class="pe-7s-close-circle"></i>
+                        <p>CIKIS</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>

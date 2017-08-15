@@ -5,40 +5,66 @@
 <body>
 <head th:replace="common/sidebar :: common-sidebar"/>
 
+<div class="main-panel" style="height:100%;">
 <div th:replace="common/header :: common-mainpanel"/>
 
-<div th:replace="common/footer :: common-footer">
 <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">ALINAN DERSLER</h4>
+                                <h4 class="title">DEVAMSIZLIK</h4>
                             </div>
                             <div class="content table-responsive table-full-width">
+                            
+                            	<div class="col-md-3">
+									<li class="dropdown">
+		                              <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+		                                    <p>DERS SECIN<b class="caret"></b></p>
+		                              </a>
+		                              <ul class="dropdown-menu" >
+		                                <li th:each="course : ${studentCourses}">
+		                                	<a th:href="@{'/student/devamsizlik/'+${course.id}}" th:text="${course.name}">Action</a>
+		                                </li>
+		                              </ul>
+                        			</li>
+                                </div>
+
                                 <table class="table table-hover table-striped">
+                                
                                     <thead>
                                         <tr>
-                                        	<th>Dersin Kodu</th>
-                                    		<th>Dersin Adi</th>
-                                    		
+                                        	<th>Ders Adi</th>
+                                    		<th>Tarih</th>
+                                    		<th>VAR/YOK</th>
                                     	</tr>
                                     </thead>
                                     <tbody>
-										<tr th:each="sCourse : ${studentCourses}">
-   												<td th:text="${sCourse.course_code}"></td>
-   												<td th:text="${sCourse.name}"></td>
+										<tr th:each="att : ${attendance}">
+												<td th:text="${att.course.name}"></td>
+   												<td th:text="${att.date}"></td>
+   												<td th:text="${att.attendance}? 'VAR' : 'YOK'"></td>
 										</tr>
                                         
                                     </tbody>
                                 </table>
+                                	
                             </div>
+                            <div class="col-md-12">
+	                            <p class="text-danger" th:if="${countYok!=null && attendance!=null}">
+	                                        Devamsizlik Sayiniz: <span th:text="${countYok}"></span>
+	                            </p>
+                             </div>
                         </div>
                     </div>
               </div>
           </div>
     </div>
+    
+</div>
+    
+    <div th:replace="common/footer :: common-footer">
 </body>
 
 </html>

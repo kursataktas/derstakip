@@ -5,6 +5,9 @@
 <body>
 <head th:replace="common/sidebar :: common-sidebar"/>
 
+
+<div class="main-panel">
+
 <div th:replace="common/header :: common-mainpanel"/>
 
 	<div class="content">
@@ -21,23 +24,28 @@
                                         <tr>
                                         	<th>Dersin Kodu</th>
                                     		<th>Dersin Adi</th>
+                                    		<th>Dersi Veren</th>
+                                    		
                                     	</tr>
                                     </thead>
                                     <tbody>
 										<tr th:each="sCourse : ${studentCourses}">
    												<td th:text="${sCourse.courseCode}"></td>
    												<td th:text="${sCourse.name}"></td>
+   												<td th:text="${sCourse.instructor.firstName +' ' +sCourse.instructor.lastName }"></td>
+   												
 										</tr>
                                         
                                     </tbody>
                                 </table>
+                                
                             </div>
                         </div>
                     </div>
               </div>
           </div>
     </div>
-
+</div>
 
 <div th:replace="common/footer :: common-footer">
 

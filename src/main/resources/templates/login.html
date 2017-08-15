@@ -1,25 +1,62 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Öğrenci Girişi</title>
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" th:href="@{/css/animate.css}">
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
+
 <body>
-		<form class="form-signin" th:action="@{/student/login}" method="post" >
-		<span th:text="${error}"></span>
-                    <h2 class="form-signin-heading">Please sign in</h2>
-                    <div class="form-group">
-                        <label  class="sr-only">E-Mail</label>
-                        <input type="text" class="form-control" placeholder="E-mail" name="mail" required="required" autofocus="autofocus"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only">Password</label>
-                        <input type="password" class="form-control" placeholder="Password" name="password" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" name="remember-me" id="remember-me"/> &nbsp; Remember me
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-         </form>
+	<div class="container">
+		
+		<form  th:action="@{/student/login}" method="post">
+			<div class="login-box" margin-t>
+				<div class="box-header">
+					<h2>Öğrenci Girişi</h2>
+				</div>
+				<label>E-mail</label>
+				<br/>
+				<input type="text" name="mail">
+				<br/>
+				<label>Şifre</label>
+				<br/>
+				<input type="password" name="password">
+				<br/>
+				<a th:if="${error!=null}"><span th:text="${error}"></span><br/><br/></a>
+				<button type="submit">Giriş Yap</button>
+				<br/>
+			</div>
+		</form>
+	</div>
 </body>
+
+<script>
+	$(document).ready(function () {
+    	$('#logo').addClass('animated fadeInDown');
+    	$("input:text:visible:first").focus();
+	});
+	$('#username').focus(function() {
+		$('label[for="username"]').addClass('selected');
+	});
+	$('#username').blur(function() {
+		$('label[for="username"]').removeClass('selected');
+	});
+	$('#password').focus(function() {
+		$('label[for="password"]').addClass('selected');
+	});
+	$('#password').blur(function() {
+		$('label[for="password"]').removeClass('selected');
+	});
+</script>
+
 </html>
