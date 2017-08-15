@@ -16,26 +16,28 @@ import javax.servlet.http.HttpSession;
  */
 
 @Controller
+@RequestMapping("/student")
 public class StudentLoginController {
-
+	
+	
     @Autowired
     private StudentService studentService;
-
-    @RequestMapping("/student")
+    
+    @RequestMapping("")
     public String index(HttpSession session) {
         if(session.getAttribute("student")==null)
             return "redirect:/login";
         return "redirect:/student/ana_sayfa";
     }
 
-    @RequestMapping(value = "/student/login", method= RequestMethod.GET)
+    @RequestMapping(value = "/login", method= RequestMethod.GET)
     public String login(ModelMap modelMap, HttpSession session) {
         if(session.getAttribute("student")!=null)
             return "redirect:/student/ana_sayfa";
         return "login";
     }
 
-    @RequestMapping(value = "/student/login", method=RequestMethod.POST)
+    @RequestMapping(value = "/login", method=RequestMethod.POST)
     public String login(@RequestParam String mail, @RequestParam String password, ModelMap modelMap, HttpSession session) {
         Student newStudent = studentService.findByMail(mail);
         if(newStudent!=null) {
@@ -44,9 +46,8 @@ public class StudentLoginController {
                 return "redirect:/student/ana_sayfa";
             }
         }
-        modelMap.put("error", "Account is invalid.");
+        modelMap.put("error", "Email ya da şifre yanlış.");
         return "login";
     }
-
 
 }
