@@ -13,7 +13,7 @@ export class InstructorService {
 	private addAnnotation_endPoint = "";
 	private editAnnotation_endPoint = "";
 	private deleteAnnotation_endPoint = "";
-	private listCourses_endPoint = "localhost:8080/api/course/courses/1";
+	private listCourses_endPoint = "http://localhost:8080/api/course/courses/1";
 	private addCourses_endPoint = "";
 	
 

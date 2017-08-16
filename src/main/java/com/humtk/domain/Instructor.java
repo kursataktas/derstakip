@@ -1,5 +1,8 @@
 package com.humtk.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -62,6 +65,8 @@ public class Instructor {
         this.mail = mail;
     }
 
+    @JsonManagedReference
+    @JsonIgnore
     public List<Course> getCourseList() {
         return courseList;
     }

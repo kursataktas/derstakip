@@ -1,5 +1,7 @@
 package com.humtk.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -61,6 +63,7 @@ public class Course {
         this.studentList = studentList;
     }
 
+    @JsonBackReference
     public Instructor getInstructor() {
         return instructor;
     }

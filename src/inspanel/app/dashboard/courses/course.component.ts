@@ -23,7 +23,7 @@ export class CourseComponent{
     listAll() {
         this.service.listCourses()
             .subscribe(
-                courses => this.courses = courses ['courses'],
+                courses => this.courses = courses,
                 error =>  this.errorMessage = <any>error);
     }
 

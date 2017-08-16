@@ -20,7 +20,7 @@ var InstructorService = (function () {
         this.addAnnotation_endPoint = "";
         this.editAnnotation_endPoint = "";
         this.deleteAnnotation_endPoint = "";
-        this.listCourses_endPoint = "localhost:8080/api/course/courses/1";
+        this.listCourses_endPoint = "http://localhost:8080/api/course/courses/1";
         this.addCourses_endPoint = "";
     }
     InstructorService.prototype.addAnnotation = function (ann, code) {

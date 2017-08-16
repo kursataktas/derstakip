@@ -1,4 +1,4 @@
-package com.humtk.controller;
+package com.humtk.controller.student;
 
 import com.humtk.domain.Student;
 import com.humtk.service.StudentService;
@@ -16,40 +16,38 @@ import javax.servlet.http.HttpSession;
  */
 
 @Controller
-public class StudentPanelController {
-
+@RequestMapping("/student")
+public class StudentLoginController {
+	
+	
     @Autowired
     private StudentService studentService;
-
-    @RequestMapping("/")
+    
+    @RequestMapping("")
     public String index(HttpSession session) {
         if(session.getAttribute("student")==null)
             return "redirect:/login";
         return "redirect:/student/ana_sayfa";
     }
 
-    @RequestMapping(value = "/student/login", method= RequestMethod.GET)
+    @RequestMapping(value = "/login", method= RequestMethod.GET)
     public String login(ModelMap modelMap, HttpSession session) {
         if(session.getAttribute("student")!=null)
             return "redirect:/student/ana_sayfa";
         return "login";
     }
 
-    @RequestMapping(value = "/student/login", method=RequestMethod.POST)
+    @RequestMapping(value = "/login", method=RequestMethod.POST)
     public String login(@RequestParam String mail, @RequestParam String password, ModelMap modelMap, HttpSession session) {
         Student newStudent = studentService.findByMail(mail);
         if(newStudent!=null) {
             if(newStudent.getPassword().equals(password)) {
                 session.setAttribute("student", newStudent);
-                System.out.println("ana");
                 return "redirect:/student/ana_sayfa";
             }
         }
-
-        System.out.println("error");
-        modelMap.put("error", "Account is invalid.");
+        modelMap.put("error", "Email ya da şifre yanlış.");
         return "login";
     }
-
 
 }

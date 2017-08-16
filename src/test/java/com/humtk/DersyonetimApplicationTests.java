@@ -43,15 +43,6 @@ public class DersyonetimApplicationTests {
 	}
 
 	@Test
-	public void addCourse() {
-		Course c = new Course();
-		c.setCourseCode("bbm201");
-		c.setName("Yazılım lab 1");
-		c.setInstructor(instructorService.findById(1));
-		courseService.save(c);
-	}
-
-	@Test
 	public void addInstructor() {
 		Instructor i = new Instructor();
 		i.setFirstName("Mustafa");
@@ -61,6 +52,16 @@ public class DersyonetimApplicationTests {
 
 		instructorService.save(i);
 	}
+
+	@Test
+	public void addCourse() {
+		Course c = new Course();
+		c.setCourseCode("bbm201");
+		c.setName("Yazılım lab 1");
+		c.setInstructor(instructorService.findById(1));
+		courseService.save(c);
+	}
+	
 
 	@Test
 	public void getInstructor() {
