@@ -1,6 +1,6 @@
 import {Component, OnInit,AfterViewInit,trigger,state,style,transition,animate,keyframes} from '@angular/core';
 
-import { InstructorService } from '../services/instructor.service';
+
 
 @Component({
     moduleId: module.id,
