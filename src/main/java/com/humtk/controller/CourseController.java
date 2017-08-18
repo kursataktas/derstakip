@@ -1,6 +1,7 @@
 package com.humtk.controller;
 
 import com.humtk.domain.Course;
+import com.humtk.domain.Student;
 import com.humtk.service.CourseService;
 import com.humtk.service.InstructorService;
 import com.humtk.util.JsonResponse;
@@ -26,6 +27,12 @@ public class CourseController {
 
     @Autowired
     private InstructorService instructorService;
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void addCourse(@RequestParam("course") Course course, @RequestParam("studentList") List<Student> students) {
+        System.out.println(course);
+        System.out.println(students);
+    }
 
     @RequestMapping(value = "/courses/{instructorId}", method = RequestMethod.GET)
     public List<Course> getCoursesByInstructorId(@PathVariable("instructorId") long id) {

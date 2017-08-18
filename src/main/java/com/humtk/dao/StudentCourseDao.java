@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface StudentCourseDao extends CrudRepository<StudentCourse, Long>{
     List<StudentCourse> findByStudent(Student student);
+    List<Student> findByCourse(long id);
 }
 
 

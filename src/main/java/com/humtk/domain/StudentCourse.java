@@ -37,6 +37,14 @@ public class StudentCourse {
         this.course = course;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     @Override
     public String toString() {
         return "StudentCourse{" +

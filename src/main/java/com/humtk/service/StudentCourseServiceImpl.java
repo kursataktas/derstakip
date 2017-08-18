@@ -31,6 +31,16 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		return courses;
 	}
 
+	@Override
+	public void save(StudentCourse studentCourseList) {
+		studentCourseDao.save(studentCourseList);
+	}
+
+	@Override
+	public List<Student> getByCourse(long id) {
+		return studentCourseDao.findByCourse(id);
+	}
+
 }
 
 
