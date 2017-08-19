@@ -16,11 +16,12 @@ require('rxjs/add/operator/map');
 var InstructorService = (function () {
     function InstructorService(http) {
         this.http = http;
+        this.app_setting = "http://localhost:8080/api/instructor/";
         this.listAnnotation_endPoint = "";
         this.addAnnotation_endPoint = "";
         this.editAnnotation_endPoint = "";
         this.deleteAnnotation_endPoint = "";
-        this.listCourses_endPoint = "http://localhost:8080/api/course/courses/1";
+        this.listCourses_endPoint = this.app_setting + "courses/1";
         this.addCourses_endPoint = "";
     }
     InstructorService.prototype.addAnnotation = function (ann, code) {

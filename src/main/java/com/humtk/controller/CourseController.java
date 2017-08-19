@@ -34,10 +34,6 @@ public class CourseController {
         System.out.println(students);
     }
 
-    @RequestMapping(value = "/courses/{instructorId}", method = RequestMethod.GET)
-    public List<Course> getCoursesByInstructorId(@PathVariable("instructorId") long id) {
-        return instructorService.findById(1).getCourseList();
-    }
 
     @RequestMapping(value = "/data/{courseId}", method = RequestMethod.GET)
     public ResponseEntity<JsonResponse> getCourseById(@PathVariable("courseId") long id) {

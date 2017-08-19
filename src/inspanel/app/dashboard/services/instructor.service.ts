@@ -9,11 +9,12 @@ import {Course} from '../../classes/course';
 @Injectable()
 export class InstructorService {
 
+	private app_setting = "http://localhost:8080/api/instructor/";
 	private listAnnotation_endPoint = "";
 	private addAnnotation_endPoint = "";
 	private editAnnotation_endPoint = "";
 	private deleteAnnotation_endPoint = "";
-	private listCourses_endPoint = "http://localhost:8080/api/course/courses/1";
+	private listCourses_endPoint = this.app_setting + "courses/1";
 	private addCourses_endPoint = "";
 	
 

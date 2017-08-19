@@ -20,6 +20,11 @@ var CourseComponent = (function () {
         this.service.listCourses()
             .subscribe(function (courses) { return _this.courses = courses; }, function (error) { return _this.errorMessage = error; });
     };
+    CourseComponent.prototype.listStudents = function (course) {
+        document.getElementById("course_table").style.display = "none";
+        this.courseCode = course.courseCode;
+        document.getElementById("student_table").style.display = "block";
+    };
     CourseComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

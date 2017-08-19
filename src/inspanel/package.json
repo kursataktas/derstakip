@@ -3,21 +3,21 @@
   "private": true,
   "version": "1.2.0",
   "scripts": {
-      "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-      "lite": "lite-server",
-      "tsc": "tsc",
-      "tsc:w": "tsc -w"
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "lite": "lite-server",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w"
   },
   "engines": {
     "node": "5.9.1"
   },
-  "license" : "MIT",
-  "repository" :
-  { "type" : "git",
-    "url" : "https://github.com/creativetimofficial/light-bootstrap-dashboard-angular.git"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creativetimofficial/light-bootstrap-dashboard-angular.git"
   },
-  "bugs":{
-      "url": "https://github.com/creativetimofficial/light-bootstrap-dashboard-angular/issues"
+  "bugs": {
+    "url": "https://github.com/creativetimofficial/light-bootstrap-dashboard-angular/issues"
   },
   "dependencies": {
     "@angular/common": "~2.4.9",
@@ -31,11 +31,12 @@
     "@angular/upgrade": "~2.4.9",
     "@types/core-js": "0.9.35",
     "angular-in-memory-web-api": "0.3.1",
-    "ng-chartist": "1.1.0",
     "angular2-google-maps": "~0.17.0",
     "chartist": "~0.9.8",
     "core-js": "~2.4.1",
     "jquery": "~3.1.1",
+    "ng-chartist": "1.1.0",
+    "ng2-datepicker-bootstrap": "^1.0.0",
     "reflect-metadata": "~0.1.8",
     "rxjs": "5.0.1",
     "systemjs": "~0.19.41",

@@ -1,7 +1,7 @@
 <div class="main-content" >
     <div class="container-fluid" style="align:center;">
         <div class="row">
-            <div class="card" style="margin-left:10%; margin-right:10%; ">
+            <div class="card" id="course_table" style="margin-left:10%; margin-right:10%; ">
                 <h4 class="title" style="margin-left: 15px; padding-top:10px;"> DERSLERİM </h4><hr>
                 <table class="table table-hover table-striped">
 
@@ -17,12 +17,29 @@
                             <td> {{course.id }}</td>
                             <td> {{course.courseCode }}  </td>
                             <td> {{course.name }}  </td>
-                            <td><button class="btn btn-default" type="button" style="height:40px; width:70px;background-color:#6495ED"><b style="color:white">-></b></button></td>
+                            <td><button (click) = "listStudents(course)" class="btn btn-default" type="button" style="height:40px; width:70px;background-color:#6495ED"><b style="color:white">-></b></button></td>
                         </tr>
-
                         </tbody>
                     </table>
                </div>
+            <div class="card" id="student_table" style="margin-left:10%; margin-right:10%;   ">
+                <h4 class="title" style="margin-left: 15px; padding-top:10px;"> {{courseCode}}- Öğrenci Listesi  </h4><hr>
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Öğrenci No</th>
+                        <th>İsim - Soyisim</th>
+                        <th>Var - Yok</th>
+                    </tr>
+                    <tbody>
+
+                    <tr *ngFor="let student of students">
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

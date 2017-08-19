@@ -2,6 +2,7 @@ import { Component,state,style,animate,transition, trigger, keyframes } from '@a
 import { NgModule } from '@angular/core';
 
 import { Course } from "../../classes/course";
+import { Student } from "../../classes/student";
 import { InstructorService } from "../services/instructor.service";
 
 @Component({
@@ -13,7 +14,8 @@ import { InstructorService } from "../services/instructor.service";
 export class CourseComponent{
 
     courses: Course[];
-
+    students : Student[];
+    courseCode: String;
     errorMessage: string;
 
     constructor (private service: InstructorService ) {
@@ -25,6 +27,12 @@ export class CourseComponent{
             .subscribe(
                 courses => this.courses = courses,
                 error =>  this.errorMessage = <any>error);
+    }
+
+    listStudents (course : Course) {
+        document.getElementById("course_table").style.display="none";
+        this.courseCode = course.courseCode;
+        document.getElementById("student_table").style.display="block";
     }
 
 
