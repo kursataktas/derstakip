@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 
@@ -32,11 +31,14 @@
 				<br/>
 				<input type="password" name="password">
 				<br/>
-				<a th:if="${error!=null}"><span th:text="${error}"></span><br/><br/></a>
+				
+				<a th:if="${error!=null}"> <span th:text="${error}"></span> <br/><br/></a>
+				
 				<button type="submit">Giriş Yap</button>
 				<br/>
 			</div>
 		</form>
+		
 	</div>
 </body>
 

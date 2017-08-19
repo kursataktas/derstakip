@@ -23,6 +23,9 @@
 		                              <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		                                    <p>DERS SECIN<b class="caret"></b></p>
 		                              </a>
+		                              <a th:if="${id!=null}" th:href="@{'/student/devamsizlik/'+${id}+'/devamsizlik_excel'}" class="btn btn-info btn-fill pull-left">Excele Yaz
+		                              </a>
+                                
 		                              <ul class="dropdown-menu" >
 		                                <li th:each="course : ${studentCourses}">
 		                                	<a th:href="@{'/student/devamsizlik/'+${course.id}}" th:text="${course.name}">Action</a>
