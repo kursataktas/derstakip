@@ -65,6 +65,10 @@ public class StudentCourseDailyAttendance {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+	
+	public String getDateStr() {
+    		return date.toString();
+    	}	
 
     
 }
