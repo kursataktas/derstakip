@@ -27,12 +27,18 @@ export class CourseComponent{
             .subscribe(
                 courses => this.courses = courses,
                 error =>  this.errorMessage = <any>error);
+
+
+
     }
 
     listStudents (course : Course) {
+        console.log(course.studentList);
         document.getElementById("course_table").style.display="none";
         this.courseCode = course.courseCode;
         document.getElementById("student_table").style.display="block";
+        this.students = course.studentList;
+
     }
 
 

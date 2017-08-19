@@ -1,5 +1,6 @@
 package com.humtk.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Student {
 
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "studentList")
+    @JsonBackReference
     private Set<Course> courseList = new HashSet<Course>(0);
 
     /*@OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

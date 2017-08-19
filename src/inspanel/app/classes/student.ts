@@ -3,5 +3,6 @@ export class Student {
     firstName : string;
     lastName : string;
     mail : string;
+    password:string;
     studentNo : number;
 }

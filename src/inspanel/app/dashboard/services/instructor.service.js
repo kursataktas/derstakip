@@ -22,6 +22,7 @@ var InstructorService = (function () {
         this.editAnnotation_endPoint = "";
         this.deleteAnnotation_endPoint = "";
         this.listCourses_endPoint = this.app_setting + "courses/1";
+        this.listStudents_endPoint = this.app_setting + "students/{{course_id}}";
         this.addCourses_endPoint = "";
     }
     InstructorService.prototype.addAnnotation = function (ann, code) {
@@ -34,6 +35,11 @@ var InstructorService = (function () {
     };
     InstructorService.prototype.listCourses = function () {
         return this.http.get(this.listCourses_endPoint)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    InstructorService.prototype.listStudentsofCourse = function () {
+        return this.http.get(this.listStudents_endPoint)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };

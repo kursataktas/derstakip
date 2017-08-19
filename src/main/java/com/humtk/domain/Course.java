@@ -1,6 +1,7 @@
 package com.humtk.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class Course {
     @JoinTable(name = "student_course", joinColumns = {
             @JoinColumn(name = "course_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "student_id", nullable = false, updatable = false) })
+    @JsonManagedReference
     private Set<Student> studentList = new HashSet<Student>(0);;
 
    /* @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

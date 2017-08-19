@@ -21,9 +21,11 @@ var CourseComponent = (function () {
             .subscribe(function (courses) { return _this.courses = courses; }, function (error) { return _this.errorMessage = error; });
     };
     CourseComponent.prototype.listStudents = function (course) {
+        console.log(course.studentList);
         document.getElementById("course_table").style.display = "none";
         this.courseCode = course.courseCode;
         document.getElementById("student_table").style.display = "block";
+        this.students = course.studentList;
     };
     CourseComponent = __decorate([
         core_1.Component({

@@ -22,7 +22,7 @@
                         </tbody>
                     </table>
                </div>
-            <div class="card" id="student_table" style="margin-left:10%; margin-right:10%;   ">
+            <div class="card" id="student_table" style="margin-left:10%; margin-right:10%; display:none; ">
                 <h4 class="title" style="margin-left: 15px; padding-top:10px;"> {{courseCode}}- Öğrenci Listesi  </h4><hr>
                 <table class="table table-hover table-striped">
                     <tr>
@@ -33,8 +33,8 @@
                     <tbody>
 
                     <tr *ngFor="let student of students">
-                        <td> </td>
-                        <td> </td>
+                        <td> {{student.studentNo}}</td>
+                        <td>{{student.firstName}}    {{student.lastName}} </td>
                         <td> </td>
                     </tr>
                     </tbody>

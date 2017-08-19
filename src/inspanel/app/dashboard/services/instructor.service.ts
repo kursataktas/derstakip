@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import {Course} from '../../classes/course';
+import {Student} from "../../classes/student";
 
 @Injectable()
 export class InstructorService {
@@ -15,6 +16,7 @@ export class InstructorService {
 	private editAnnotation_endPoint = "";
 	private deleteAnnotation_endPoint = "";
 	private listCourses_endPoint = this.app_setting + "courses/1";
+	private listStudents_endPoint = this.app_setting + "students/{{course_id}}";
 	private addCourses_endPoint = "";
 	
 
@@ -40,6 +42,12 @@ export class InstructorService {
 		return this.http.get(this.listCourses_endPoint)
 			.map(res => res.json())
 			.catch(this.handleError)
+	}
+
+	public listStudentsofCourse () : Observable<Student[]> {
+		return this.http.get(this.listStudents_endPoint)
+            .map(res => res.json())
+            .catch(this.handleError)
 	}
 	
 	addCourse () {

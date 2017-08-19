@@ -4,5 +4,5 @@ export class Course {
     id : number;
     courseCode: string;
     name: string;
-    studentList: Student;
+    studentList: Student[];
 }
