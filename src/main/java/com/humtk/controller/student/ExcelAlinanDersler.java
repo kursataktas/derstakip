@@ -27,7 +27,7 @@ public class ExcelAlinanDersler extends AbstractXlsView{
 		 header.createCell(0).setCellValue("Dersin Kodu");
 		 header.createCell(1).setCellValue("Dersin Adı");
 		 header.createCell(2).setCellValue("Dersi Veren");
-		  
+		 
 		 int rowNum = 1;
 		 for(Course course:studentList){
 			 Row row = sheet.createRow(rowNum++);
