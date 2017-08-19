@@ -1,18 +1,13 @@
 package com.humtk.service;
 
 import com.humtk.dao.StudentAttendanceDao;
-import com.humtk.dao.StudentCourseDao;
-import com.humtk.dao.StudentDao;
 import com.humtk.domain.Course;
 import com.humtk.domain.Student;
-import com.humtk.domain.StudentCourse;
 import com.humtk.domain.StudentCourseDailyAttendance;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**

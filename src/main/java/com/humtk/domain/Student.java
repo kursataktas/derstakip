@@ -3,7 +3,9 @@ package com.humtk.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by kursat on 6.8.2017.
@@ -23,8 +25,9 @@ public class Student {
 
     private int studentNo;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private List<StudentCourse> courseList;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "studentList")
+    private Set<Course> courseList = new HashSet<Course>(0);
 
     /*@OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
@@ -78,13 +81,14 @@ public class Student {
         this.studentNo = studentNo;
     }
 
-    public List<StudentCourse> getCourseList() {
+    public Set<Course> getCourseList() {
         return courseList;
     }
 
-    public void setCourseList(List<StudentCourse> courseList) {
+    public void setCourseList(Set<Course> courseList) {
         this.courseList = courseList;
     }
+
 
     @Override
     public String toString() {
@@ -95,7 +99,6 @@ public class Student {
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
                 ", studentNo=" + studentNo +
-                ", courseList=" + courseList +
                 '}';
     }
 }

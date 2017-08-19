@@ -24,14 +24,12 @@ public class InstructorPanelController {
     @Autowired
     private InstructorService instructorService;
     @Autowired
-    private StudentCourseService studentCourseService;
-    @Autowired
     private StudentAttendanceService attendanceService;
 
     @RequestMapping(value = "/courses/{instructorId}", method = RequestMethod.GET)
     public List<Course> getCoursesByInstructorId(@PathVariable("instructorId") long id) {
-        System.out.print( instructorService.findById(1).getCourseList());
+        System.out.print(instructorService.findById(1).getCourseList());
         return instructorService.findById(1).getCourseList();
     }
 
-    }
+}

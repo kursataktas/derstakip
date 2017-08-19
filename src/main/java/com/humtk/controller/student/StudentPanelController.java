@@ -5,7 +5,6 @@ import com.humtk.domain.Student;
 import com.humtk.domain.StudentCourseDailyAttendance;
 import com.humtk.service.CourseService;
 import com.humtk.service.StudentAttendanceService;
-import com.humtk.service.StudentCourseService;
 import com.humtk.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,9 +29,6 @@ public class StudentPanelController {
 
     @Autowired
     private CourseService courseService;
-    
-    @Autowired
-    private StudentCourseService studentCourseService;
     
     @Autowired
     private StudentAttendanceService attendanceService;
@@ -62,7 +58,7 @@ public class StudentPanelController {
         
         Student st = (Student) session.getAttribute("student");
         
-        List<Course> sc = studentCourseService.getByStudent(st);
+        List<Course> sc = courseService.getByStudent(st);
         List<StudentCourseDailyAttendance> attendance = attendanceService.getByStudent(st);
        
         model.addAttribute("activeDevam",true);
@@ -76,7 +72,7 @@ public class StudentPanelController {
     @RequestMapping(value = "/devamsizlik/{id}", method=RequestMethod.GET)
     public String devamsizlik(@PathVariable long id, Model model, HttpSession session) {
     	Student student = (Student) session.getAttribute("student");
-        List<Course> sc = studentCourseService.getByStudent(student);
+        List<Course> sc = courseService.getByStudent(student);
         Course course = courseService.findById(id);
         List<StudentCourseDailyAttendance> attendance = attendanceService.getByStudentAndCourse(student, course);
         
@@ -104,7 +100,7 @@ public class StudentPanelController {
 
         Student student = (Student) session.getAttribute("student");
         
-        List<Course> sc = studentCourseService.getByStudent(student);
+        List<Course> sc = courseService.getByStudent(student);
 
         model.addAttribute("studentCourses",sc);
         
@@ -116,7 +112,7 @@ public class StudentPanelController {
     @RequestMapping(value="/alinan_dersler_excel", method=RequestMethod.GET)
     public ModelAndView getExcelAlinanDersler(HttpSession session){
     	Student student = (Student) session.getAttribute("student");       
-	    List<Course> courses = studentCourseService.getByStudent(student);
+	    List<Course> courses = courseService.getByStudent(student);
         return new ModelAndView(new ExcelAlinanDersler(), "courses", courses);
     }
     

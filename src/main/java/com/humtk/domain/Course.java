@@ -1,15 +1,19 @@
 package com.humtk.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by kursat on 6.8.2017.
  */
 
 @Entity
+@Component
 public class Course {
 
     @Id
@@ -19,13 +23,15 @@ public class Course {
     private String name;
     private String courseCode;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<StudentCourse> studentList;
-
     @ManyToOne
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "student_course", joinColumns = {
+            @JoinColumn(name = "course_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "student_id", nullable = false, updatable = false) })
+    private Set<Student> studentList = new HashSet<Student>(0);;
 
    /* @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
@@ -55,14 +61,6 @@ public class Course {
         this.courseCode = courseCode;
     }
 
-    public List<StudentCourse> getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(List<StudentCourse> studentList) {
-        this.studentList = studentList;
-    }
-
     @JsonBackReference
     public Instructor getInstructor() {
         return instructor;
@@ -70,6 +68,14 @@ public class Course {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public Set<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(Set<Student> studentList) {
+        this.studentList = studentList;
     }
 
     @Override

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.websocket.Session;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by kursat on 8.8.2017.
@@ -28,6 +29,9 @@ public class CourseServiceImpl implements CourseService {
 
     @Autowired
     private StudentDao studentDao;
+
+    @Autowired
+    private Course course;
 
     public List<Course> getCoursesByInstructorId(Long InstructorId) {
         return null;
@@ -49,7 +53,22 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> getByStudentCourse(long studentId) {
-        return new ArrayList<Course>();
+    public Set<Course> getByStudentId(long studentId) {
+        Student student = studentDao.findById(studentId);
+        return student.getCourseList();
+    }
+
+    @Override
+    public void addStudent(Student student, Course course) throws Exception {
+        boolean x = course.getStudentList().add(student);
+        if (x)
+            courseDao.save(course);
+        else
+            throw new Exception("Öğrencinin kursa kayıt işlemi başarısız.");
+    }
+
+    @Override
+    public List<Course> getByStudent(Student student) {
+        return (List) student.getCourseList();
     }
 }
