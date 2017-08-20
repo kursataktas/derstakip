@@ -1,13 +1,11 @@
 package com.humtk.controller.instructor;
 
 import com.humtk.domain.Course;
+import com.humtk.domain.Student;
 import com.humtk.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
@@ -38,5 +36,13 @@ public class InstructorPanelController {
     public List<Course> getStudentsByCourseId(@PathVariable("instructorId") long id) {
         return (List)courseService.findById(id).getStudentList();
     }
+
+    @RequestMapping(value = "/course/add", method = RequestMethod.POST)
+    public void addCourse(@RequestParam("course") Course course, @RequestParam("studentList") List<Student> students) {
+        System.out.println(course);
+        System.out.println(students);
+    }
+
+
 
 }
