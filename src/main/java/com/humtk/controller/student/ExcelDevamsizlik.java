@@ -11,7 +11,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsView;
 
-import com.humtk.domain.StudentCourseDailyAttendance;
+import com.humtk.domain.StudentAttendance;
 
 public class ExcelDevamsizlik extends AbstractXlsView{
 	 
@@ -20,7 +20,7 @@ public class ExcelDevamsizlik extends AbstractXlsView{
 		 HttpServletResponse response) throws Exception {
 		 
 		 response.setHeader("Content-Disposition", "attachment;filename=\"devamsizlik.xls\"");
-		 List<StudentCourseDailyAttendance> attendance = (List<StudentCourseDailyAttendance>) model.get("attendances");
+		 List<StudentAttendance> attendance = (List<StudentAttendance>) model.get("attendances");
 		 Sheet sheet = workbook.createSheet("Devamsizlik");
 		 Row header = sheet.createRow(0);
 		 header.createCell(0).setCellValue("Dersin Adi");
@@ -28,11 +28,11 @@ public class ExcelDevamsizlik extends AbstractXlsView{
 		 header.createCell(2).setCellValue("Var/Yok");
 
 		 int rowNum = 1;
-		 for(StudentCourseDailyAttendance sa: attendance){
+		 for(StudentAttendance sa: attendance){
 			 Row row = sheet.createRow(rowNum++);
 			 row.createCell(0).setCellValue(sa.getCourse().getName());
-			 row.createCell(1).setCellValue(sa.getDateStr());
-			 row.createCell(2).setCellValue(sa.isAttendance()?"Var":"Yok");
+			 row.createCell(1).setCellValue(sa.getDate().toString());
+			 row.createCell(2).setCellValue(sa.getAttendance()?"Var":"Yok");
 		 }
 		 
 		 

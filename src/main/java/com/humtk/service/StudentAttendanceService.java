@@ -2,9 +2,8 @@ package com.humtk.service;
 
 import com.humtk.domain.Course;
 import com.humtk.domain.Student;
-import com.humtk.domain.StudentCourseDailyAttendance;
+import com.humtk.domain.StudentAttendance;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,7 +11,8 @@ import java.util.List;
  */
 public interface StudentAttendanceService {
 
-    List<StudentCourseDailyAttendance> getByStudent(Student student);
-    List<StudentCourseDailyAttendance> getByStudentAndCourse(Student student, Course course);
-    
+    List<StudentAttendance> getByStudent(Student student);
+    List<StudentAttendance> getByCourse(Course course);
+    List<StudentAttendance> getByStudentAndCourse(Student student, Course course);
+    void save(StudentAttendance studentAttendance);
 }

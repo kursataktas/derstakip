@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -31,9 +30,8 @@ public class Student {
     @JsonBackReference
     private Set<Course> courseList = new HashSet<Course>(0);
 
-    /*@OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<StudentCourseDailyAttendance> studentCourseDailyAttendanceList;*/
+    @OneToMany(mappedBy = "pk.student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<StudentAttendance> studentAttendanceList = new HashSet<StudentAttendance>(0);
 
     public long getId() {
         return id;
@@ -91,6 +89,13 @@ public class Student {
         this.courseList = courseList;
     }
 
+    public Set<StudentAttendance> getStudentAttendanceList() {
+        return studentAttendanceList;
+    }
+
+    public void setStudentAttendanceList(Set<StudentAttendance> studentAttendanceList) {
+        this.studentAttendanceList = studentAttendanceList;
+    }
 
     @Override
     public String toString() {

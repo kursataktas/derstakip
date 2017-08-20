@@ -1,12 +1,12 @@
 package com.humtk.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,9 +35,8 @@ public class Course {
     @JsonManagedReference
     private Set<Student> studentList = new HashSet<Student>(0);;
 
-   /* @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<StudentCourseDailyAttendance> studentCourseDailyAttendanceList;*/
+    @Transient
+    private Set<StudentAttendance> studentAttendances = new HashSet<StudentAttendance>(0);
 
     public long getId() {
         return id;
@@ -78,6 +77,15 @@ public class Course {
 
     public void setStudentList(Set<Student> studentList) {
         this.studentList = studentList;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.course")
+    public Set<StudentAttendance> getStudentAttendances() {
+        return studentAttendances;
+    }
+
+    public void setStudentAttendances(Set<StudentAttendance> studentAttendances) {
+        this.studentAttendances = studentAttendances;
     }
 
     @Override

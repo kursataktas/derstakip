@@ -2,10 +2,9 @@ package com.humtk.controller.student;
 
 import com.humtk.domain.Course;
 import com.humtk.domain.Student;
-import com.humtk.domain.StudentCourseDailyAttendance;
+import com.humtk.domain.StudentAttendance;
 import com.humtk.service.CourseService;
 import com.humtk.service.StudentAttendanceService;
-import com.humtk.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,7 +58,7 @@ public class StudentPanelController {
         Student st = (Student) session.getAttribute("student");
         
         List<Course> sc = courseService.getByStudent(st);
-        List<StudentCourseDailyAttendance> attendance = attendanceService.getByStudent(st);
+        List<StudentAttendance> attendance = attendanceService.getByStudent(st);
        
         model.addAttribute("activeDevam",true);
         model.addAttribute("attendance",attendance);
@@ -74,12 +73,12 @@ public class StudentPanelController {
     	Student student = (Student) session.getAttribute("student");
         List<Course> sc = courseService.getByStudent(student);
         Course course = courseService.findById(id);
-        List<StudentCourseDailyAttendance> attendance = attendanceService.getByStudentAndCourse(student, course);
+        List<StudentAttendance> attendance = attendanceService.getByStudentAndCourse(student, course);
         
         int countYok = 0;
         
-        for (StudentCourseDailyAttendance sa : attendance)
-			if(!sa.isAttendance())
+        for (StudentAttendance sa : attendance)
+			if(!sa.getAttendance())
 				countYok++;
         
         model.addAttribute("id",id);
@@ -120,7 +119,7 @@ public class StudentPanelController {
     public ModelAndView getExcelDevamsizlik(@PathVariable long id, HttpSession session){
     	Student student = (Student) session.getAttribute("student");
         Course course = courseService.findById(id);
-        List<StudentCourseDailyAttendance> attendance = attendanceService.getByStudentAndCourse(student, course);
+        List<StudentAttendance> attendance = attendanceService.getByStudentAndCourse(student, course);
         
         return new ModelAndView(new ExcelDevamsizlik(), "attendances", attendance);
     }
