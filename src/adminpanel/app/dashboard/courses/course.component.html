@@ -2,27 +2,20 @@
     <div class="container-fluid" style="align:center;">
         <div class="row">
             <div class="card" style="margin-left:10%; margin-right:10%; ">
-                <h4 class="title" style="margin-left: 15px; padding-top:10px;"> DERS EKLE </h4><hr>
-                <table class="table table-hover table-striped">
+                <tbody><h4 class="title" style="margin-left: 15px; padding-top:10px;"> DERS EKLE </h4></tbody><hr>
+                    <div class="dropdown" style = "margin-left:42%">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hoca Seç
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu" *ngFor ="let instructor of instructors" >
+                            <li><button (click)="chooseIns(instructor)" style="background-color:white;border: none;height: 30px;">{{instructor.firstName}} {{instructor.lastName}}</button></li>
+                        </ul>
+                    </div>
+                    <br><p style="margin-left:2%;">Ders Kodu</p>
+					<input type="text" #dersKodu class="form-control" style="width: 95%;margin-left: 2%;" placeholder="Ders kodu">
+                    <br><p style="margin-left:2%;">Ders İsmi</p>
+					<input type="text" #dersAdi class="form-control" style="width: 95%;margin-left: 2%;" placeholder="Ders İsmi">
+                    <button (click) = "addCourse(dersKodu.value,dersAdi.value)" class="btn btn-default" type="button" style="height:40px;width:90px;background-color:#6495ED;margin-left: 44%;margin-top: 2%;margin-bottom: 2%; "><b style="color:white">KAYDET</b></button>
 
-                        
-                            <tr>ID
-							<input type="text" #annotation class="form-control" style="width:70%;" placeholder="ID Ekle">
-                            </tr>
-							<tr> </tr>
-                            <tr>Ders Kodu
-							<input type="text" #annotation class="form-control" style="width:70%;" placeholder="Ders kodu Ekle"></tr>
-							<tr> </tr>
-                            <tr>Ders İsmİ
-							<input type="text" #annotation class="form-control" style="width:70%;" placeholder="Ders İsmi Ekle"></tr>
-							<tr> </tr>
-                            <td><button class="btn btn-default" type="button" style="height:40px; width:90px;background-color:#6495ED"><b style="color:white">KAYDET</b></button></td>
-                     
-                        <tbody>
-
-                        
-                        </tbody>
-                    </table>
                </div>
         </div>
     </div>

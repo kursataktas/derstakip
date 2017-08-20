@@ -1,8 +1,11 @@
 
+import {Course} from "./course";
+
 export class Instructor {
     id : number;
-    ad : string;
-    soyad : string;
+    firstName : string;
+    lastName : string;
+    password : string;
     mail : string;
-    password : number;
+    courseList: Course[];
 }

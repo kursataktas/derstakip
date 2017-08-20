@@ -28,8 +28,6 @@ export class CourseComponent{
                 courses => this.courses = courses,
                 error =>  this.errorMessage = <any>error);
 
-
-
     }
 
     listStudents (course : Course) {

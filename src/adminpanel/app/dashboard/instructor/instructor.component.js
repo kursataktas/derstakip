@@ -13,12 +13,8 @@ var instructor_service_1 = require("../services/instructor.service");
 var InstructorComponent = (function () {
     function InstructorComponent(service) {
         this.service = service;
-        this.listAll();
     }
     InstructorComponent.prototype.listAll = function () {
-        var _this = this;
-        this.service.listCourses()
-            .subscribe(function (instructors) { return _this.instructors = instructors['instructors']; }, function (error) { return _this.errorMessage = error; });
     };
     InstructorComponent = __decorate([
         core_1.Component({

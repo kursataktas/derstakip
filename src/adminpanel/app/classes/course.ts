@@ -1,6 +1,14 @@
+import { Student } from "./student";
+import { Instructor } from "./instructor";
+
+
+
+
+
 export class Course {
     id : number;
-    course_code: string;
+    courseCode: string;
     name: string;
-    instructor_id: number;
+    studentList: Student[];
+    instructor: Instructor;
 }

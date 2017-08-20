@@ -9,16 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var course_1 = require("../../classes/course");
 var instructor_service_1 = require("../services/instructor.service");
 var CourseComponent = (function () {
     function CourseComponent(service) {
         this.service = service;
-        this.listAll();
+        this.newCourse = new course_1.Course();
+        this.getInstructors();
     }
-    CourseComponent.prototype.listAll = function () {
+    CourseComponent.prototype.getInstructors = function () {
         var _this = this;
-        this.service.listCourses()
-            .subscribe(function (courses) { return _this.courses = courses['courses']; }, function (error) { return _this.errorMessage = error; });
+        this.service.listInstructors()
+            .subscribe(function (instructors) { return _this.instructors = instructors; }, function (error) { return _this.errorMessage = error; });
+    };
+    CourseComponent.prototype.chooseIns = function (instructor) {
+        this.instructor = instructor;
+    };
+    CourseComponent.prototype.addCourse = function (courseCode, courseName) {
+        var _this = this;
+        console.log(courseCode + "   " + courseName + "  " + this.instructor.firstName);
+        if (!courseCode || !courseName || !this.instructor)
+            return;
+        this.newCourse.courseCode = courseCode;
+        this.newCourse.name = courseName;
+        this.newCourse.studentList = null;
+        this.newCourse.instructor = this.instructor;
+        this.service.addCourse(this.newCourse)
+            .subscribe(function (error) { return _this.errorMessage = error; });
     };
     CourseComponent = __decorate([
         core_1.Component({

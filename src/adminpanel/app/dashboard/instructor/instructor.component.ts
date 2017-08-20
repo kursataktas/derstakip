@@ -17,14 +17,11 @@ export class InstructorComponent{
     errorMessage: string;
 
     constructor (private service: InstructorService ) {
-        this.listAll();
+
     }
 
     listAll() {
-        this.service.listCourses()
-            .subscribe(
-                instructors => this.instructors = instructors ['instructors'],
-                error =>  this.errorMessage = <any>error);
+
     }
 
 

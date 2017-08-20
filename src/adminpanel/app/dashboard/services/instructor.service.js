@@ -16,27 +16,29 @@ require('rxjs/add/operator/map');
 var InstructorService = (function () {
     function InstructorService(http) {
         this.http = http;
+        this.app_setting = "http://localhost:8080/api/admin/";
+        this.listInstructors_URL = this.app_setting + "list/instructor";
+        this.addCourse_URL = this.app_setting + "add/course";
         this.listAnnotation_endPoint = "";
         this.addAnnotation_endPoint = "";
         this.editAnnotation_endPoint = "";
         this.deleteAnnotation_endPoint = "";
-        this.listCourses_endPoint = "localhost:8080/api/course/courses/1";
         this.addCourses_endPoint = "";
     }
-    InstructorService.prototype.addAnnotation = function (ann, code) {
-    };
-    InstructorService.prototype.deleteAnnotation = function () {
-    };
-    InstructorService.prototype.updateAnnotation = function () {
-    };
     InstructorService.prototype.listAnnotations = function () {
     };
-    InstructorService.prototype.listCourses = function () {
-        return this.http.get(this.listCourses_endPoint)
+    InstructorService.prototype.listInstructors = function () {
+        return this.http.get(this.listInstructors_URL)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    InstructorService.prototype.addCourse = function () {
+    InstructorService.prototype.addCourse = function (course) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        console.log("hslsllsl" + course.courseCode);
+        return this.http.post(this.addCourse_URL, course, options)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
     };
     InstructorService.prototype.handleError = function (error) {
         var errMsg;
