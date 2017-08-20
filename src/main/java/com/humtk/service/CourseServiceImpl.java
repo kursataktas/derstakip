@@ -69,6 +69,8 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<Course> getByStudent(Student student) {
-        return (List) student.getCourseList();
+        List<Course> l = new ArrayList<Course>();
+        l.addAll(student.getCourseList());
+        return l;
     }
 }
