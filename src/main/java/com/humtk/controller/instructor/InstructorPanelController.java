@@ -28,7 +28,6 @@ public class InstructorPanelController {
 
     @RequestMapping(value = "/courses/{instructorId}", method = RequestMethod.GET)
     public List<Course> getCoursesByInstructorId(@PathVariable("instructorId") long id) {
-        System.out.print(instructorService.findById(id).getCourseList());
         return instructorService.findById(id).getCourseList();
     }
 
@@ -36,13 +35,6 @@ public class InstructorPanelController {
     public List<Course> getStudentsByCourseId(@PathVariable("instructorId") long id) {
         return (List)courseService.findById(id).getStudentList();
     }
-
-    @RequestMapping(value = "/course/add", method = RequestMethod.POST)
-    public void addCourse(@RequestParam("course") Course course, @RequestParam("studentList") List<Student> students) {
-        System.out.println(course);
-        System.out.println(students);
-    }
-
 
 
 }

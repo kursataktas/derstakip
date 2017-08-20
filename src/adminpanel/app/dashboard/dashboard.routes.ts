@@ -2,7 +2,7 @@ import { Route } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { CourseComponent } from './courses/course.component';
-import { StudentComponent } from './student/student.component';
+//import { StudentComponent } from './student/student.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { IconsComponent } from './icons/icons.component';
 import { TableComponent } from './table/table.component';
@@ -14,7 +14,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 export const MODULE_ROUTES: Route[] =[
     { path: 'home', component: HomeComponent },
     { path: 'courses', component: CourseComponent },
-    { path: 'student', component: StudentComponent },
+   // { path: 'student', component: StudentComponent },
     { path: 'instructor', component: InstructorComponent },
     { path: 'table', component: TableComponent },
     { path: 'icons', component: IconsComponent },
@@ -28,7 +28,7 @@ export const MODULE_ROUTES: Route[] =[
 export const MODULE_COMPONENTS = [
     HomeComponent,
     CourseComponent,
-    StudentComponent,
+  //  StudentComponent,
     InstructorComponent,
     TableComponent,
     IconsComponent,
